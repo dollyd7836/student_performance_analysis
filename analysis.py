@@ -1,74 +1,56 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# -----------------------
-# LOAD DATA
-# -----------------------
+# Load dataset
 df = pd.read_csv("students.csv")
 
-print("\n================ FULL DATA ================\n")
+print("\nFULL DATA")
 print(df)
 
-# -----------------------
-# PASS / FAIL ANALYSIS
-# -----------------------
+# Pass / Fail students
 pass_students = df[df["Marks"] >= 50]
 fail_students = df[df["Marks"] < 50]
 
-print("\n================ PASS STUDENTS ================\n")
+print("\nPASS STUDENTS")
 print(pass_students)
 
-print("\n================ FAIL STUDENTS ================\n")
+print("\nFAIL STUDENTS")
 print(fail_students)
 
-# -----------------------
-# BASIC STATS
-# -----------------------
-print("\nAverage Marks (Pass):", pass_students["Marks"].mean())
-print("Average Marks (Fail):", fail_students["Marks"].mean())
-print("Highest Marks:", df["Marks"].max())
-print("Lowest Marks:", df["Marks"].min())
+# Basic statistics
+print("\nAVERAGE MARKS (PASS):", pass_students["Marks"].mean())
+print("AVERAGE MARKS (FAIL):", fail_students["Marks"].mean())
+print("HIGHEST MARK:", df["Marks"].max())
+print("LOWEST MARK:", df["Marks"].min())
 
-# -----------------------
-# CITY ANALYSIS
-# -----------------------
+# City-wise analysis
 city_avg = df.groupby("City")["Marks"].mean()
 city_count = df.groupby("City")["Name"].count()
 
-print("\n================ CITY WISE AVERAGE ================\n")
+print("\nCITY-WISE AVERAGE MARKS")
 print(city_avg)
 
-print("\n================ CITY WISE STUDENT COUNT ================\n")
+print("\nCITY-WISE STUDENT COUNT")
 print(city_count)
 
-# -----------------------
-# INSIGHT (IMPORTANT PART)
-# -----------------------
+# Insights
 top_city = city_avg.idxmax()
-best_student = df.loc[df["Marks"].idxmax(), "Name"]
+top_student = df.loc[df["Marks"].idxmax(), "Name"]
 
-print("\n================ INSIGHTS ================\n")
-print("Top Performing City:", top_city)
-print("Top Student:", best_student)
+print("\nTOP PERFORMING CITY:", top_city)
+print("TOP STUDENT:", top_student)
 
-# -----------------------
-# SAVE FILES
-# -----------------------
+# Save outputs
 pass_students.to_csv("pass_students.csv", index=False)
 fail_students.to_csv("fail_students.csv", index=False)
 city_avg.to_csv("city_avg_marks.csv")
 
-print("\nFiles exported successfully!")
+print("\nFILES SAVED SUCCESSFULLY!")
 
-# -----------------------
-# VISUALIZATION
-# -----------------------
-plt.figure(figsize=(6,4))
-city_avg.plot(kind="bar", color="skyblue")
-
-plt.title("City-wise Average Marks Analysis")
+# Visualization
+city_avg.plot(kind="bar")
+plt.title("City-wise Average Marks")
 plt.xlabel("City")
 plt.ylabel("Average Marks")
-
 plt.tight_layout()
 plt.show()
