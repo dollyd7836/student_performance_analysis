@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Name,Marks,City
 A,80,Delhi
 B,40,Mumbai
@@ -6,4 +7,14 @@ D,30,Noida
 E,90,Delhi
 F,55,Mumbai
 G,65,Noida
+=======
+Name,Marks,City
+A,80,Delhi
+B,40,Mumbai
+C,70,Delhi
+D,30,Noida
+E,90,Delhi
+F,55,Mumbai
+G,65,Noida
+>>>>>>> 6527c4dff23a917adebc053771c64b5732af8092
 H,20,Delhi
