@@ -45,10 +45,10 @@ The dataset contains:
 2. Run the script:python analysis.py
 
 ## 🔗 Project Link
+https://github.com/dollyd7836/student_performance_analysis/blob/main/analysis.py
+---
 
-
-
-## 💡 Author
+##💡 Author
 
 Dolly  
 (B.Tech CSE Student | Aspiring Data Analyst)
