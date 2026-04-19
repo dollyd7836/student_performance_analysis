@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import pandas as pd
 import matplotlib.pyplot as plt
 
@@ -7,11 +6,17 @@ df = pd.read_csv("students.csv")
 
 print("\n===== STUDENT ANALYSIS REPORT =====\n")
 
+# FIX: remove extra spaces from column names
+df.columns = df.columns.str.strip()
+
+# Check columns
+print("Columns:", df.columns)
+
 # Add Result column
 df["Result"] = df["Marks"].apply(lambda x: "Pass" if x >= 50 else "Fail")
 
 # Show full data
-print(df)
+print("\nFull Data:\n", df)
 
 # Pass & Fail
 pass_students = df[df["Result"] == "Pass"]
@@ -35,5 +40,8 @@ print("\nTopper:\n", topper)
 
 # Graph
 city_avg.plot(kind="bar")
+plt.title("Average Marks by City")
+plt.xlabel("City")
+plt.ylabel("Marks")
+plt.tight_layout()
 plt.show()
-
